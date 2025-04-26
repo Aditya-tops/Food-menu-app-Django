@@ -3,9 +3,18 @@ from .models import Item
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Heloo World")
+    item_list = Item.objects.all()
+    context = {
+        "item_list":item_list,
+    }
+    return render(request,'food/index.html',context)
 
 def item(request):
-    item_list = Item.objects.all()
-    return HttpResponse(item_list)
+    return HttpResponse('item_list')
 
+def detail(request,item_id):
+    item = Item.objects.get(pk=item_id)
+    context = {
+        'item':item,
+    }
+    return render (request,'food/detail.html',context)
