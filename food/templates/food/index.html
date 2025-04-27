@@ -1,4 +1,5 @@
-{% load static %}
+
+{% extends "food/base.html" %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -6,19 +7,41 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="{% static 'food/style.css' %}">
-  </head>
+     </head>
   <body>
 
-    {% for item in item_list %}
-    <ul>
-      <li>
-        <a href="{% url 'food:detail' item.id %}">
-          {{item.id}}--{{item.item_name}}
-        </a>
-      </li>
-    </ul>
-    {% endfor %}
+    {% block body %}
+      {% for item in item_list %}
+      <div class="row mb-4 align-items-center">
+        <div class="col-md-2 offset-md-1 mt-2" >
+            <img class="img-fluid rounded" height="100px" width="100px" src="{{ item.item_image }}" alt="Image" style="object-fit: cover;">
+        </div>
+        <div class="col-md-5">
+            <h3>{{ item.item_name }}</h3>
+            <h5 class="text-muted">{{ item.item_desc }}</h5>
+            <h6 class="text-success">₹{{ item.item_price }}</h6>
+        </div>
+        <div class="col-md-2 text-center">
+            <a href="{% url 'food:detail' item.id %}" class="btn btn-success">Details</a>
+        </div>
+    </div>
     
+      {% endfor %}
+    {% endblock %}
+
+
+
+
+    
+        
+        {% comment %} <ul>
+          <li>
+            <a href="{% url 'food:detail' item.id %}">
+              {{item.id}}--{{item.item_name}}
+            </a>
+          </li>
+        </ul> {% endcomment %}
+        
+
   </body>
 </html>
