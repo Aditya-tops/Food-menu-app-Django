@@ -20,10 +20,10 @@
       </nav>
 
       {% if messages %}
-          {% for msg in messages  %}
-            <div class="alert alert-{{msg.tag}}">
-              {{msg}}
-            </div>
+          {% for msg in messages %}
+              <div class="alert alert-{{ msg.tags }}">
+                  {{ msg|safe }}
+              </div>
           {% endfor %}
       {% endif %}
 
