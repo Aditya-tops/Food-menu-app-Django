@@ -1,2 +1,7 @@
-<h1>You are successfully logged out!</h1>
 
+{% block body %}
+  <div class="container mt-5 text-center">
+    <h1>You are successfully logged out!</h1>
+    <p><a href="{% url 'login' %}">Click here to log in again</a></p>
+  </div>
+{% endblock %}
