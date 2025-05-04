@@ -123,6 +123,11 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR / "static"] #added by me
 LOGIN_REDIRECT_URL = 'food:index' #added by me
 LOGOUT_REDIRECT_URL = 'login'  # optional if you want to redirect instead of showing a template
+LOGIN_URL = 'login' #added by me for profilepage login
+
+import os
+MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures')#added by me for URL Location folder
+MEDIA_URL = '/pictures/'#added by me for URL Location folder
 
 
 
