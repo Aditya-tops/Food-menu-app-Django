@@ -20,6 +20,7 @@
             <h3>{{ item.item_name }}</h3>
             <h5 class="text-muted">{{ item.item_desc }}</h5>
             <h6 class="text-success">₹{{ item.item_price }}</h6>
+            <h6 class="text-success">{{ item.user_name }}</h6>
         </div>
         <div class="col-md-2 text-center">
             <a href="{% url 'food:detail' item.id %}" class="btn btn-success">Details</a>

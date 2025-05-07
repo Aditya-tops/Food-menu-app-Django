@@ -8,4 +8,3 @@ class ItemForm(forms.ModelForm):
         model = Item
         fields = ['item_name','item_desc','item_price','item_image']
     
-
