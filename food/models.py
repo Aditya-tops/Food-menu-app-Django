@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse # its user for getabsoluteuel for rediret page
 # Create your models here.
 
 class Item(models.Model):
@@ -13,4 +14,7 @@ class Item(models.Model):
     def __str__(self):
         return self.item_name
 
+    def get_absolute_url(self):
+        return reverse("food:detail", kwargs={"pk": self.pk})
+    
 

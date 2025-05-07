@@ -20,6 +20,7 @@ def detail(request,item_id):
     item = Item.objects.get(pk=item_id)
     return render (request,'food/detail.html',{'item':item})
 
+
 class FoodDetail(DetailView):
     model = Item;
     template_name = 'food/detail.html'
@@ -34,6 +35,20 @@ def create_item(request):
         return redirect('food:index')
     
     return render(request,'food/item-form.html',{'form':form})
+
+# this is classbase view for create item
+from django.views.generic.edit import CreateView
+
+class CreateItem(CreateView):
+    
+    model = Item;
+
+    fields = [ 'item_name','item_desc','item_price','item_image' ]
+    def form_valid(self, form):
+        form.instance.user_name = self.request.user
+        return super().form_valid(form)
+    
+    template_name = 'food/item-form.html'
 
 def update_item(request,id):
     item = Item.objects.get(id=id)
